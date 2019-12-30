@@ -1,0 +1,70 @@
+<script>
+    let compSelec = "placeholder";
+    let playSelec = "placeholder";
+    function playRound(computerSelection, playerSelection) {
+        let compSelec = computerSelection;
+        let playSelec = playerSelection;
+        if (playerSelection == computerSelection) {
+            return "draw"
+        }
+        else if ((playerSelection == "rock" && computerSelection == "scissors") ||
+        (playerSelection == "paper" && computerSelection == "rock") ||
+        (playerSelection == "scissors" && computerSelection == "paper")) {
+            return "win"
+        }
+        else if ((playerSelection == "rock" && computerSelection == "paper") ||
+        (playerSelection == "paper" && computerSelection == "scissors") ||
+        (playerSelection == "scissors" && computerSelection == "rock")) {
+            return "lose"
+        }
+        else {
+            return "Not valid."
+        }
+    }
+    
+    function computerPlay() {
+        let randInt = Math.floor(Math.random() * 3);
+        if (randInt == 0) {
+            return "rock"
+        }
+        else if (randInt == 1) {
+            return "paper"
+        }
+        else {
+            return "scissors"
+        }
+    }
+    function playerPlay() {
+        let choice = prompt("Rock, paper, or scissors?");
+        let choiceLowerCase = choice.toLowerCase();
+        if (choiceLowerCase == "rock" || "paper" || "scissors") {
+            return choiceLowerCase
+        }
+        else {
+            return "Not valid response."
+        }
+    }
+    let computerScore = 0
+    let playerScore = 0
+    function game(n) {
+        for (let i = 0; i < n; i++) {
+            let round = playRound(computerPlay(), playerPlay());
+            if (round == "draw") {
+                console.log("Draw.")
+                i--
+            }
+            else if (round == "win") {
+                console.log("You win, " + playSelec + " beats " + compSelec)
+                playerScore++
+            }
+            else if (round == "lose") {
+                console.log("You lose, " + compSelec + " beats " + playSelec)
+                computerScore++
+            }
+            else {
+                console.log("Not valid.")
+                i--
+            }
+        }
+    }
+</script>
