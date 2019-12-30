@@ -2,8 +2,8 @@
     let compSelec = "placeholder";
     let playSelec = "placeholder";
     function playRound(computerSelection, playerSelection) {
-        let compSelec = computerSelection;
-        let playSelec = playerSelection;
+        compSelec = computerSelection;
+        playSelec = playerSelection;
         if (playerSelection == computerSelection) {
             return "draw"
         }
@@ -44,8 +44,8 @@
             return "Not valid response."
         }
     }
-    let computerScore = 0
-    let playerScore = 0
+    let computerScore = 0;
+    let playerScore = 0;
     function game(n) {
         for (let i = 0; i < n; i++) {
             let round = playRound(computerPlay(), playerPlay());
@@ -66,5 +66,13 @@
                 i--
             }
         }
+        if (computerScore >> playerScore) {
+            console.log("You lost " + computerScore + " to " + playerScore)
+        }
+        else if (playerScore >> computerScore) {
+            console.log("You won " + playerScore + " to " + computerScore)
+        }
+        computerScore = 0
+        playerScore = 0
     }
 </script>
